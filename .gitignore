@@ -1,0 +1,17 @@
+# Compilation Java et pilote JDBC
+out/
+*.class
+*.jar
+
+# Fichiers produits à l exécution
+temporary_csv_*.csv
+updated_dataset.csv
+*.pkl
+
+# Données réelles : jamais versionnées
+data/real/
+
+__pycache__/
+.idea/
+*.iml
+.DS_Store
