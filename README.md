@@ -27,9 +27,18 @@ Prédiction de paramètres de roche réservoir à partir des diagraphies de 3 pu
 |---|---:|
 | Régression linéaire | 0,15 |
 | SVM (RBF) | 0,29 |
-| MLP 100/50 ReLU | **0,52** (MAE 21,4) |
+| MLP 100/50 ReLU | **0,52** (MAE 21,4, RMSE 27,6) |
 
-La corrélation reste insuffisante sur des formations géologiques hétérogènes : ces travaux ont été poursuivis en CDD chez ENAGEO (2023–2024), avec imputation préalable des diagraphies et modèles de deep learning.
+La corrélation reste insuffisante sur des formations géologiques hétérogènes.
+
+## Suite : CDD chez ENAGEO (2023–2024)
+
+J'ai poursuivi ce travail pendant un an de CDD à temps partiel chez ENAGEO. Chaque caractéristique de la roche (élasticité, densité…) est mesurée à intervalles réguliers le long du puits. Les séries obtenues sont souvent incomplètes (matériel défaillant, données perdues au transfert ou supprimées), et ces mesures coûtent très cher. L'objectif était de **prédire la série elle-même** là où elle manque, en traitant chaque série indexée par la profondeur comme une série temporelle (tendance, saisonnalité, cycles), avec des modèles de deep learning, principalement des LSTM et des RNN :
+
+1. **Imputation dans un même puits** : prédire les valeurs manquantes d'une série à partir de ses parties mesurées.
+2. **Généralisation inter-puits** : entraîner un LSTM sur la série d'un puits et prédire la même caractéristique dans un autre puits, dans la continuité du stage.
+
+Par rapport au stage, la corrélation est passée de **0,52 à 0,82**, la MAE de **21,4 à 15,8** et la RMSE de **27,6 à 20,2**, soit 20 à 30 % d'erreur en moins. Ces résultats ne suffisaient pas encore pour une exploitation par l'entreprise ; le projet était toujours en développement à mon départ en France. Le code et les données du CDD, propriété d'ENAGEO, ne sont pas publiés ici.
 
 ## Lancer l'application
 
@@ -98,4 +107,4 @@ Code distribué sous [licence MIT](LICENSE).
 
 ## Auteur
 
-**Amar Merabti** — Licence informatique, USTHB ; stage ENAGEO (févr.–juin 2023).
+**Amar Merabti** — Licence informatique, USTHB ; stage (févr.–juin 2023) puis CDD (juil. 2023–juil. 2024) chez ENAGEO.
